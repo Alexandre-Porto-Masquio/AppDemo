@@ -14,7 +14,7 @@ class NewsDataSource (private val api: NewsApi) : PagingSource<Int, NewsResponse
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, NewsResponse> {
         val currentPage = params.key ?: INITIAL_PAGE
         return try {
-            val response = api.fetchNews(page = currentPage)
+            val response = api.fetchTechNews(page = currentPage)
 
             val nextKey = if (response.isEmpty()) {
                 null
