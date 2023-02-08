@@ -6,6 +6,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 
 class NewsDataSource (private val api: NewsApi) : PagingSource<Int, NewsResponse>() {
+
     override fun getRefreshKey(state: PagingState<Int, NewsResponse>) = state.anchorPosition?.let {
         state.closestPageToPosition(it)?.prevKey?.plus(1) ?:
         state.closestPageToPosition(it)?.nextKey?.minus(1)
